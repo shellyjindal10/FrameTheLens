@@ -1,0 +1,13 @@
+ReadME
+
+1: Command to start the sass
+sass --watch style.scss:style.css
+sass --watch menu-bar.scss:menu-bar.css
+
+2: Copy of photpgraphy 
+http://www.jjchenphotography.com/about-me
+
+
+_language-selector.scss
+
+sass --watch _language-selector.scss:_language-selector.css
