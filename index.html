@@ -29,17 +29,17 @@
                 <a href="#">wedding Photography<span class="arrow"></span></a>
                 <ul style="display: none;" class="sub_menu">
                   <li class="arrow_top"></li>
-                  <li><a href="#">Jason &amp; Fabie</a></li>
+                  <li><a href="#" class="loadFlickrImages">Jason &amp; Fabie</a></li>
                 </ul>
               </li>
               <li>
                 <a href="#">our work<span class="arrow"></span></a>
                 <ul style="display: none;" class="sub_menu">
                   <li class="arrow_top"></li>
-                  <li><a href="#">Engagement</a></li>
-                  <li><a href="#">Kids</a></li>
-                  <li><a href="#">Family</a>
-                  </li><li><a href="#">Couples</a></li>
+                  <li><a href="#" class="loadFlickrImages">Engagement</a></li>
+                  <li><a href="#" class="loadFlickrImages">Kids</a></li>
+                  <li><a href="#" class="loadFlickrImages">Family</a>
+                  </li><li><a href="#" class="loadFlickrImages">Couples</a></li>
                 </ul>
               </li>
               <li><a href="#">contact</a></li>
@@ -64,8 +64,8 @@
 <!--Configuration for the Justified Gallery -->
 <div class = "container-fluid ImageGallery" ng-controller="MainController" >
 		<div  ng-repeat="fh in data ">
-			<a  alt="{{fh.title}}" href="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c.jpg">
-				<img alt="{{fh.title}}" src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>
+			<a  class="flickrImages" alt="{{fh.title}}" href="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c.jpg">
+				<img class="flickrImage" alt="{{fh.title}}" src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>
 			 </a>
 		</div>
 </div>

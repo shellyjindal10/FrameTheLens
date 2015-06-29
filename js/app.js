@@ -66,6 +66,18 @@ $(window).load(function(){
 			   $('.ImageGallery a').swipebox();
         });
     });
+
+   $(".loadFlickrImages").click(function() {
+   	      var tagName = $(this).text();
+          var url = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c&tags="+tagName+'.jpg';
+          console.log(url);
+
+          var image = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}&tags="+tagName+'.jpg';
+
+
+          $(this).attr("href", url);
+          $(".flickrImage").attr("src",image);
+   });
 })
 
 
