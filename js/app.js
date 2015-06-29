@@ -1,12 +1,23 @@
 
 
 var app = angular.module('Flickr', []);
-
+var flickrLoadFlag = false;
 app.controller('MainController', function($scope, $http) {
-  $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06")
-  .success(function(data){
-    $scope.data = data.photos.photo;
-  })
+	if(flickrLoadFlag==false){
+		console.log('inside flag false');
+		$http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06")
+	  .success(function(data){
+	    $scope.data = data.photos.photo;
+	  })
+	}else{
+		console.log('Inside flag true');
+        $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06&tags="+tagName)
+             .success(function(data){
+           	    console.log('inside flag true sucess');
+                $scope.data = data.photos.photo;
+                console.log($scope.data);
+        })
+	}
 });
 
 $(window).load(function(){
@@ -68,15 +79,19 @@ $(window).load(function(){
     });
 
    $(".loadFlickrImages").click(function() {
+   	      console.log('I am clicked');
    	      var tagName = $(this).text();
-          var url = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c&tags="+tagName+'.jpg';
-          console.log(url);
+   	      flickrLoadFlag=true;
+   	      console.log('flag value is '+flickrLoadFlag);
+          //var url = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c&tags="+tagName+'.jpg';
+          //console.log(url);
 
-          var image = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}&tags="+tagName+'.jpg';
+         // var image = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}&tags="+tagName+'.jpg';
 
 
-          $(this).attr("href", url);
-          $(".flickrImage").attr("src",image);
+          //$(this).attr("href", url);
+          //$(".flickrImage").attr("src",image);
+          
    });
 })
 
