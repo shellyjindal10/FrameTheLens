@@ -62,7 +62,7 @@
 
 
 <!--Configuration for the Justified Gallery -->
-<div class = "container-fluid ImageGallery" ng-controller="MainController" >
+<div class = "container-fluid ImageGallery" ng-controller="MainController" id="flickrGallery">
 		<div  ng-repeat="fh in data ">
 			<a  class="flickrImages" alt="{{fh.title}}" href="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c.jpg">
 				<img class="flickrImage" alt="{{fh.title}}" src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>

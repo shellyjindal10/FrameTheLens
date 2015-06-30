@@ -83,16 +83,30 @@ $(window).load(function(){
    	      var tagName = $(this).text();
    	      flickrLoadFlag=true;
    	      console.log('flag value is '+flickrLoadFlag);
-          //var url = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c&tags="+tagName+'.jpg';
-          //console.log(url);
-
-         // var image = "https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}&tags="+tagName+'.jpg';
-
-
-          //$(this).attr("href", url);
-          //$(".flickrImage").attr("src",image);
+   	      call();
           
    });
+
+   function call() {
+   	    console.log('I am inside the call function ');
+   	    var scope = angular.element(document.getElementById('flickrGallery')).scope();
+   	    console.log('scope is '+scope);
+   	    scope.$apply(function($scope, $http){
+	        //scope.msg = scope.msg + ' I am the newly addded message from the outside of the controller.';
+	        $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06&tags="+tagName)
+             .success(function(data){
+           	    console.log('inside call sucess');
+                $scope.data = data.photos.photo;
+                console.log($scope.data);
+            })
+	    })
+
+	    // var scope = angular.element(document.getElementById('container')).scope();
+	    //   scope.$apply(function(){
+	    //     scope.msg = scope.msg + ' I am the newly addded message from the outside of the controller.';
+	    // })
+	    // alert(scope.returnHello());
+   }
 })
 
 
