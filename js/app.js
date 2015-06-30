@@ -6,13 +6,21 @@ app.controller('MainController', function($scope, $http) {
   $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06")
   .success(function(data){
     $scope.data = data.photos.photo;
-  })
+  });
+  $scope.click=function($tag){
+    //alert($tag);
+    $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06&tags="+$tag)
+    .success(function(data){
+      $scope.data = data.photos.photo;
+      console.log(data);
+    });
+  }
 });
 
 $(window).load(function(){
 	jQuery(document).ready(function() {
 		  jQuery(".ImageGallery").justifiedGallery({
-		    lastRow : 'justify',
+		    lastRow : 'nojustify',
 		    rowHeight : 300,
 		    fixedHeight : true,
 		    captions : false,
