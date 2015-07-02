@@ -3,28 +3,52 @@
 var app = angular.module('Flickr', []);
 
 app.controller('MainController', function($scope, $http) {
-  $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06")
+  $scope.tag = window.location.hash.substr(1)||'';
+  if ( $scope.tag === '') {
+  $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04")
   .success(function(data){
     $scope.data = data.photos.photo;
   });
+   }
+   else {
+     $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$scope.tag)
+     .success(function(data){
+       $scope.data = data.photos.photo;
+     });
+   }
   $scope.click=function($tag){
-    //alert($tag);
-    $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2d0dca73fa32eb6ab7c1a5f251d8e3cd&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=35003907@N06&tags="+$tag)
+    $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$tag)
     .success(function(data){
       $scope.data = data.photos.photo;
-      console.log(data);
     });
-  }
+  };
+  $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+  update_justified_gallery();
+  });
 });
 
-$(window).load(function(){
-	jQuery(document).ready(function() {
+app.directive('onFinishRender', function ($timeout) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                });
+            }
+        }
+    }
+});
+
+
+  function update_justified_gallery(){
 		  jQuery(".ImageGallery").justifiedGallery({
-		    lastRow : 'nojustify',
+		    lastRow : 'justify',
 		    rowHeight : 300,
-		    fixedHeight : true,
+		    fixedHeight : false,
 		    captions : false,
 		    margins : 3,
+        randomize: true,
 		    sizeRangeSuffixes: {
 		      'lt100':'_t',
 		      'lt240':'_m',
@@ -36,8 +60,7 @@ $(window).load(function(){
 		  }).on('jg.complete', function () {
 			   $('.ImageGallery a').swipebox();
         });
-    });
-})
+  }
 
 
 $(function(){

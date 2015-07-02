@@ -2,9 +2,10 @@
 
 <html ng-app="Flickr">
 <head>
+
   <title>Frame The Lens</title>
   <!-- favicon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
@@ -27,7 +28,7 @@
   <link rel="stylesheet" type="text/css" href="lib/justifiedGallery/swipebox.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
-<body  ng-app ng-controller="MainController">
+<body ng-controller="MainController">
 <!-- Header -->
 <header>
 
@@ -38,19 +39,19 @@
     <div id="fdw" class="header-top" >
           <nav>
             <ul>
-              <li class="current"><a href="#">home<span class="arrow"></span></a>
-                <ul style="display: none;" class="sub_menu">
+              <li class="current"><a href="#" ng-click="click('')">home</span></a>
+                <!--<ul style="display: none;" class="sub_menu">
                   <li class="arrow_top"></li>
                   <li><a class="subCurrent" href="#">Home Service</a></li>
-                  <!--<li><a href="#">Home Responsive</a></li>-->
-                </ul>
+                  <li><a href="#">Home Responsive</a></li>
+                </ul> -->
               </li>
               <li><a href="#">about us</a></li>
               <li>
-                <a href="#">wedding Photography<span class="arrow"></span></a>
+                <a href="#">Wedding Photography<span class="arrow"></span></a>
                 <ul style="display: none;" class="sub_menu">
                   <li class="arrow_top"></li>
-                  <li><a href="#">Jason &amp; Fabie</a></li>
+                  <li><a href="#jason_fabie" ng-click="click('jason_fabie')">Jason &amp; Fabie</a></li>
                   <!--<li><a href="#">Jason &amp; Fabie</a></li>
                   <li><a href="#">Jason &amp; Fabie</a></li>
                   <li><a href="#">Jason &amp; Fabie</li>-->
@@ -60,18 +61,18 @@
                 <a href="#">our work<span class="arrow"></span></a>
                 <ul style="display: none;" class="sub_menu">
                   <li class="arrow_top"></li>
-                  <li><a href="#" ng-click="click('Engagement')">Engagement</a></li>
-                  <li><a href="#">Kids</a></li>
-                  <li><a href="#">Family</a>
-                  </li><li><a href="#">Couples</a></li>
+                  <li><a href="#nature" ng-click="click('nature')">Nature</a></li>
+                  <li><a href="#kids" ng-click="click('kids')">Kids</a></li>
+                  <li><a href="#family" ng-click="click('family')">Family</a>
+                  </li><li><a href="#couples" ng-click="click('couples')">Couples</a></li>
                 </ul>
               </li>
               <li><a href="#">contact</a></li>
               <li><a href="#">faq</a></li>
             </ul>
           </nav>
-    </div><!-- end fdw -->
-  </div><!-- end of container fluid -->
+    </div><!-- end -->
+  </div><!-- end of container fluid-->
   </header><!-- end header -->
 
 <!-- End of Animation Header-->
@@ -87,13 +88,12 @@
 
 <!--Configuration for the Justified Gallery -->
 <div class = "container-fluid ImageGallery"  >
-		<div  ng-repeat="fh in data ">
+		<div  ng-repeat="fh in data " on-finish-render="ngRepeatFinished">
 			<a  alt="{{fh.title}}" href="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}_c.jpg">
-				<img alt="{{fh.title}}" src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>
+				<img alt="{{fh.title}}" ng-src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>
 			 </a>
 		</div>
 </div>
-
 <!-- End  of the Gallery of images -->
 
 </body>
@@ -107,7 +107,9 @@
 <!--app js file-->
 <script src="js/app.js"></script>
 
+
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "b4510806-b491-40b4-a14c-6deed730e99f", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript">stLight.options({publisher: "b4510806-b491-40b4-a14c-6deed730e99f"});</script>
+
 </html>
