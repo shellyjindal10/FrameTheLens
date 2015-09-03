@@ -353,11 +353,11 @@ a {
 
 .titleBold {
   font-weight: 900;
-  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 20px;
-  color: #333333; }
+  color: #444; }
 
 .text {
-  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 18px;
-  color: #333333; }
+  color: #777; }
