@@ -13,7 +13,7 @@
   margin-left: 20px;
   width: auto;
   margin-top: 0px;
-  backround-color: grey; }
+  background-color: #000; }
 
 .share-button {
   padding-right: 30px;
@@ -298,6 +298,10 @@ a {
 @media only screen and (min-width: 1069px) and (max-width: 1441px) {
   #logo-image {
     margin-left: 100px;
+    float: left; }
+
+  .textDiv {
+    margin-left: 10%;
     float: left; } }
 /* Medium Screen */
 @media only screen and (min-width: 736px) and (max-width: 1068px) {
@@ -310,7 +314,12 @@ a {
 
   .header-top {
     text-align: center;
-    margin-left: 90px; } }
+    margin-left: 90px; }
+
+  .textDiv {
+    margin-left: 20%;
+    margin-top: 100px;
+    float: left; } }
 /* Small Screen */
 @media only screen and (min-width: 320px) and (max-width: 735px) {
   #logo-image {
@@ -326,9 +335,29 @@ a {
     margin-left: 20px;
     width: auto;
     margin-top: 25px;
-    background-color: #000; }
+    backround-color: grey; }
 
   .share-button {
-    margin-top: -10px; } }
+    margin-top: -10px; }
 
-/*# sourceMappingURL=style.css.map */
+  .textDiv {
+    margin-left: 20%;
+    margin-top: 100px;
+    float: left; } }
+.textDiv {
+  margin-left: 20%;
+  margin-top: 100px;
+  float: left;
+  width: 1000px;
+  height: auto; }
+
+.titleBold {
+  font-weight: 900;
+  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-size: 20px;
+  color: #333333; }
+
+.text {
+  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-size: 18px;
+  color: #333333; }

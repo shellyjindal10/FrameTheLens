@@ -21,6 +21,42 @@ app.controller('MainController', function($scope, $http) {
     .success(function(data){
       $scope.data = data.photos.photo;
     });
+    $('.textDiv').hide();
+  };
+  $scope.load=function($tag){
+    $('.textDiv').show();
+    $scope.data ="";
+    $('.justified-gallery').css('height',0);
+
+    // write the text in the html file
+        switch ($tag) {
+            case 'aboutus':
+                 var aboutUsDiv;
+                 $.getJSON("data/aboutus.json", function(json) {
+                    $.each(json, function(key, value) {
+                       aboutUsDiv = document.getElementsByClassName("textDiv")[0];
+                       aboutUsDiv.innerHTML = '<div class="aboutUsText"><p class="text">'+value.title+'</p><br/><p class="text">'+value.teamDetails+'</p><br/><p class="text">'+value.contactDetails+'</p></div>';
+                    });
+                 });
+                 break;
+            case 'contact':
+                var contactUsDiv;
+                $.getJSON("data/contactus.json", function(json) {
+                    $.each(json, function(key, value) {
+                       contactUsDiv = document.getElementsByClassName("textDiv")[0];
+                       contactUsDiv.innerHTML = '<div class="contactUsText"><p class="titleBold">'+value.title+'</p><br/><p class="text">'+value.phoneNumber+'</p><br/><p class="text">'+value.emailAddress+'</p></div>';
+                    });
+                 });
+                break;
+            case 'faq':
+                $.getJSON("data/faq.json", function(json) {
+                    $.each(json, function(key, value) {
+                       faqDiv = document.getElementsByClassName("textDiv")[0];
+                       faqDiv.innerHTML = '<div class="faqText"><p class="titleBold">'+value.title+'</p><br/><br/><p class="text">'+value.question1+'</p><br/><p class="text">'+value.answer1+'</p><br/><br/><p class="text">'+value.question2+'</p><br/><p class="text">'+value.answer1+'</p></div>';
+                    });
+                 });
+                break;
+    	  }
   };
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
   update_justified_gallery();

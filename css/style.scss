@@ -320,6 +320,11 @@ a{
    			margin-left:100px;
    			float:left;
    }
+
+   .textDiv{
+   			margin-left:10%;
+   			float:left;
+   }
 }
 
 /* Medium Screen */
@@ -335,6 +340,12 @@ a{
 	       text-align: center;
 	        margin-left:90px;
    }
+
+   .textDiv{
+   		margin-left:20%;
+   		margin-top:100px;
+   		float:left;
+    }
 }
 
 /* Small Screen */
@@ -358,4 +369,33 @@ a{
    .share-button{
 			margin-top:-10px
    }
+
+   .textDiv{
+   		margin-left:20%;
+   		margin-top:100px;
+   		float:left;
+    }
 }
+
+.textDiv{
+   		margin-left:20%;
+   		margin-top:100px;
+   		float:left;
+   		width: 1000px;
+   		height:auto;
+   		
+}
+
+.titleBold{
+	    font-weight: 900;
+	    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+	    font-size: 20px;
+	    color: #333333;
+}
+
+.text{
+	    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+   		font-size: 18px;
+   		color: #333333;
+}
+
