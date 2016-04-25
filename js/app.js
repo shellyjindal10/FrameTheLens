@@ -4,10 +4,27 @@ var app = angular.module('Flickr', []);
 
 app.controller('MainController', function($scope, $http) {
   $scope.tag = window.location.hash.substr(1)||'';
+  $scope.shuffle =function (array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
   if ( $scope.tag === '') {
-  $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04")
+  $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=60&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04")
   .success(function(data){
-    $scope.data = data.photos.photo;
+    $scope.data = $scope.shuffle(data.photos.photo);
   });
    }
    else {
