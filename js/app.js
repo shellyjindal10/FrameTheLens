@@ -28,15 +28,15 @@ app.controller('MainController', function($scope, $http) {
   });
    }
    else {
-     $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$scope.tag)
+     $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=60&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$scope.tag)
      .success(function(data){
-       $scope.data = data.photos.photo;
+       $scope.data = $scope.shuffle(data.photos.photo);
      });
    }
   $scope.click=function($tag){
-    $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=30&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$tag)
+    $http.jsonp("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=aae18bcf64dcd5a3795f9a2fc768b2c0&per_page=60&format=json&jsoncallback=JSON_CALLBACK&user_id=132753382@N04&tags="+$tag)
     .success(function(data){
-      $scope.data = data.photos.photo;
+      $scope.data = $scope.shuffle(data.photos.photo);
     });
     $('.textDiv').hide();
   };
